@@ -7,21 +7,46 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
+  Image,
   StyleSheet,
   Text,
   View
 } from 'react-native';
 
+import GiphyAPI from './common/services/giphy_api';
+
 export default class ReactNativeStarter extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      gif_url: null
+    };
+
+    this.fetchGif();
+  }
+
+  fetchGif() {
+    let thisRef = this;
+    GiphyAPI.search('hack').then(data => {
+      thisRef.setState({
+        gif_url: data[0].images.original.url
+      });
+    });
+  }
+
   render() {
+
+    let imageUrl = this.state.gif_url;
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          Welcome to React Native (w/ Giphy)
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
+        {imageUrl ? (
+            <Image source={{uri: imageUrl}}
+                   style={{width: 300, height: 300}} />
+          ) : null}
         <Text style={styles.instructions}>
           Press Cmd+R to reload,{'\n'}
           Cmd+D or shake for dev menu
