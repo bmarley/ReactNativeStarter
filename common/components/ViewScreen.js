@@ -5,10 +5,9 @@ import {
     View,
     TouchableOpacity,
     Alert,
-    ScrollView
+    ScrollView,
+    Image
 } from 'react-native';
-
-var Carousel = require('react-native-carousel');
 
 const tryAgainBtn_Click = () => {
   Alert.alert('Try Again Button has been pressed!');
@@ -25,7 +24,7 @@ const saveBtn_Click = () => {
 class ViewScreen extends React.Component {
     static navigationOptions = {
         // Nav options can be defined as a function of the navigation prop:
-        title: ({ state }) => `Chat with ${state.params.exampleParam}`,
+        title: ({ state }) => 'Haiku Time',
     };
 
     render() {
@@ -33,19 +32,25 @@ class ViewScreen extends React.Component {
         const { params } = this.props.navigation.state;
         return (
             <View style={styles.view}>
-                <View style={styles.header}>
-                  <Text style={styles.headerText}>Haiku Time!</Text>
-                </View>
                 <View style={styles.haikuContent}>
-                  <ScrollView>
+                  <ScrollView style={styles.haikuScrollView}>
                       <View style={styles.haikuComponent}>
-                        <Text>View 1</Text>
+                        <Image style={styles.haikuImage}
+                                source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
+                        />
+                        <Text style={styles.haikuText}>View 1</Text>
                       </View>
                       <View style={styles.haikuComponent}>
-                        <Text>View 2</Text>
+                        <Image style={styles.haikuImage}
+                                source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
+                        />
+                        <Text style={styles.haikuText}>View 2</Text>
                       </View>
                       <View style={styles.haikuComponent}>
-                        <Text>View 3</Text>
+                        <Image style={styles.haikuImage}
+                                source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
+                        />
+                        <Text style={styles.haikuText}>View 3</Text>
                       </View>
                   </ScrollView>
                 </View>
@@ -89,7 +94,11 @@ const styles = StyleSheet.create({
       backgroundColor: 'blue'
     },
     haikuComponent: {
-      flex: 2
+
+    },
+    haikuImage: {
+      width: 150,
+      height: 150
     },
     buttons: {
       flex: 1,
