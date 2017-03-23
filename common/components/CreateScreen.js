@@ -10,12 +10,12 @@ import {
 
 import HaikuTextInput from './HaikuTextInput';
 import firebase from '../services/firebase';
-import GiphyAPI from '../services/giphy_api'
+import GiphyAPI from '../services/giphy_api';
 
 class CreateScreen extends React.Component {
   static navigationOptions = {
     // Nav options can be defined as a function of the navigation prop:
-    title: ({ state }) => `Chat with ${state.params.exampleParam}`,
+    title: ({ state }) => 'Haiku Me',
   };
 
   constructor(props) {
@@ -63,16 +63,25 @@ class CreateScreen extends React.Component {
     if (!state.text1 || !state.text2 || !state.text3) {
       Alert.alert('Fill in all fields')
     } else {
-      var gif1 = GiphyAPI.search(state.text1).then(data => {
-        console.log(data[0].images.original.url);
-      });
-      var gif2 = GiphyAPI.search(state.text2).then(data => {
-        console.log(data[0].images.original.url);
-      });
-      var gif3 = GiphyAPI.search(state.text3).then(data => {
-        console.log(data[0].images.original.url);
-      });
+      var gif1, gif2, gif3;
 
+      // TODO: Promise library
+      GiphyAPI.search(state.text1).then(data => {
+        gif1 = data[0].images.original.url;
+        console.log(gif1);
+
+        GiphyAPI.search(state.text2).then(data => {
+          gif2 = data[0].images.original.url;
+          console.log(gif2);
+
+          GiphyAPI.search(state.text3).then(data => {
+            gif3 = data[0].images.original.url;
+            console.log(gif3);
+
+            Alert.alert('All gifs have been received')
+          });
+        });
+      });
 
       // TODO get 3 gifs and call firebase.save(model,callback);
     }

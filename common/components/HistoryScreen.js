@@ -9,7 +9,7 @@ import {
 import HaikuList from './HaikuList.js';
 
 class HistoryScreen extends React.Component {
-    
+
   static navigationOptions = {
     title: 'Hai-Yous',
   };
