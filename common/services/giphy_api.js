@@ -10,7 +10,7 @@ function search(query) {
     return fetch(url)
         .then((response) => response.json())
         .then((responseJson) => {
-            console.log(responseJson.data[0]);
+            //console.log(responseJson.data[0]);
             return responseJson.data;
         })
         .catch((error) => {

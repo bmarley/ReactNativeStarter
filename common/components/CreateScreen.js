@@ -10,12 +10,21 @@ import {
 
 import HaikuTextInput from './HaikuTextInput';
 import firebase from '../services/firebase';
+import GiphyAPI from '../services/giphy_api'
 
 class CreateScreen extends React.Component {
   static navigationOptions = {
     // Nav options can be defined as a function of the navigation prop:
     title: ({ state }) => `Chat with ${state.params.exampleParam}`,
   };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+    };
+  }
+
   render() {
     // The screen's current route is passed in to `props.navigation.state`:
     const { params } = this.props.navigation.state;
@@ -52,9 +61,20 @@ class CreateScreen extends React.Component {
   onPressSubmitHaiku() {
     let state = this.state;
     if (!state.text1 || !state.text2 || !state.text3) {
-        Alert('Fill in all fields')
+      Alert.alert('Fill in all fields')
     } else {
-        // TODO get 3 gifs and call firebase.save(model,callback);
+      var gif1 = GiphyAPI.search(state.text1).then(data => {
+        console.log(data[0].images.original.url);
+      });
+      var gif2 = GiphyAPI.search(state.text2).then(data => {
+        console.log(data[0].images.original.url);
+      });
+      var gif3 = GiphyAPI.search(state.text3).then(data => {
+        console.log(data[0].images.original.url);
+      });
+
+
+      // TODO get 3 gifs and call firebase.save(model,callback);
     }
   }
 }
@@ -84,7 +104,6 @@ const styles = StyleSheet.create({
   },
   view: {
     alignItems: 'center',
-    padding: 30,
   }
 });
 
