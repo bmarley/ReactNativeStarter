@@ -6,27 +6,22 @@ import {
   View
 } from 'react-native';
 
+import HaikuList from './HaikuList.js';
+
 class HistoryScreen extends React.Component {
+    
   static navigationOptions = {
-    title: 'Welcome',
+    title: 'Hai-Yous',
   };
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View style={styles.view}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+      <View style={styles.container}>
+        <HaikuList navigation={this.props.navigation}/>
         <Button
+          style={styles.create}
           onPress={() => navigate('Create', { exampleParam: 'Jonathan' })}
-          title="Open Example Screen"
+          title="Let's Hai-go!"
         />
       </View>
     );
@@ -36,9 +31,7 @@ class HistoryScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#b3d6d2'
   },
   welcome: {
     fontSize: 20,
@@ -50,6 +43,9 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  create: {
+    backgroundColor: '#e5e5e5'
+  }
 });
 
 module.exports = HistoryScreen;
