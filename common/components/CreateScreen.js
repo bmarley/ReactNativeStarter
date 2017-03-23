@@ -84,7 +84,6 @@ const styles = StyleSheet.create({
   },
   view: {
     alignItems: 'center',
-    padding: 30,
   }
 });
 
