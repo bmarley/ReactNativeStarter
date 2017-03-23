@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import HaikuTextInput from './HaikuTextInput';
+import firebase from '../services/firebase';
 
 class CreateScreen extends React.Component {
   static navigationOptions = {
@@ -23,32 +24,40 @@ class CreateScreen extends React.Component {
         <View style={styles.view}>
           <HaikuTextInput
             style={styles.text}
+            onChangeText={(text) => this.setState({text1: text})}
             syllables={5}
           />
           <HaikuTextInput
             style={styles.text}
+            onChangeText={(text) => this.setState({text2: text})}
             syllables={7}
           />
           <HaikuTextInput
             style={styles.text}
+            onChangeText={(text) => this.setState({text3: text})}
             syllables={5}
           />
           <Button
             style={styles.button}
+            onPress={this.onPressSubmitHaiku.bind(this)}
+            title="Generate Haiku"
             color="#841584"
-            onPress={onPressSubmitHaiku}
-            title='Generate Haiku'
             accessibilityLabel='Generate a Haiku'
           />
         </View>
       </Image>
     );
   }
-}
 
-const onPressSubmitHaiku = () => {
-  Alert.alert('Poetry in motion');
-};
+  onPressSubmitHaiku() {
+    let state = this.state;
+    if (!state.text1 || !state.text2 || !state.text3) {
+        Alert('Fill in all fields')
+    } else {
+        // TODO get 3 gifs and call firebase.save(model,callback);
+    }
+  }
+}
 
 const styles = StyleSheet.create({
   backgroundImage: {

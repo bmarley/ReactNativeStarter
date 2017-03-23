@@ -21,7 +21,7 @@ let getList = function(callback) {
 };
 
 let save = function(model, callback) {
-
+    console.log('saving');
 };
 
 let get = function(id, callback) {
