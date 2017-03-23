@@ -9,23 +9,41 @@ let getList = function(callback) {
 
     firebase.database().ref(rootPath).on('value', (snapshot) => {
 
-        let result = "";
+        let results = [];
 
         if (snapshot.val()) {
-            result = snapshot.val()
+            results = snapshot.val()
         }
 
-        callback(result)
+        callback(results)
     });
 
 };
 
 let save = function(model, callback) {
-    console.log('saving');
+    let rootPath = "/";
+
+    firebase.database().ref(rootPath).push(model, function(err) {
+        if (err) {
+            callback({status: 'error'});
+        } else {
+            callback({status: 'success'});
+        }
+    });
 };
 
 let get = function(id, callback) {
+    let rootPath = "/" + id;
 
+    firebase.database().ref(rootPath).on('value', function(snapshot) {
+        let result = {};
+
+        if (snapshot.val()) {
+            result = snapshot.val()
+        }
+
+        callback(result);
+    });
 };
 
 module.exports = {
