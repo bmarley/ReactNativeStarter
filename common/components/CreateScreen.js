@@ -10,7 +10,7 @@ import {
 
 import HaikuTextInput from './HaikuTextInput';
 import firebase from '../services/firebase';
-import giphy_api from '../services/giphy_api'
+import GiphyAPI from '../services/giphy_api'
 
 class CreateScreen extends React.Component {
   static navigationOptions = {
@@ -63,13 +63,17 @@ class CreateScreen extends React.Component {
     if (!state.text1 || !state.text2 || !state.text3) {
       Alert.alert('Fill in all fields')
     } else {
-      var gif1 = giphy_api.search(state.text1);
-      var gif2 = giphy_api.search(state.text2);
-      var gif3 = giphy_api.search(state.text3);
+      var gif1 = GiphyAPI.search(state.text1).then(data => {
+        console.log(data[0].images.original.url);
+      });
+      var gif2 = GiphyAPI.search(state.text2).then(data => {
+        console.log(data[0].images.original.url);
+      });
+      var gif3 = GiphyAPI.search(state.text3).then(data => {
+        console.log(data[0].images.original.url);
+      });
 
-      console.log(gif1.url)
-      console.log(gif2.url)
-      console.log(gif3.url)
+
       // TODO get 3 gifs and call firebase.save(model,callback);
     }
   }
