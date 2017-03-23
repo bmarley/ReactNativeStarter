@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   Alert,
   Button,
+  Image,
   StyleSheet,
   Text,
   View
@@ -18,26 +19,28 @@ class CreateScreen extends React.Component {
     // The screen's current route is passed in to `props.navigation.state`:
     const { params } = this.props.navigation.state;
     return (
-      <View style={styles.view}>
-        <HaikuTextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-          syllables={5}
-        />
-        <HaikuTextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-          syllables={7}
-        />
-        <HaikuTextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-          syllables={5}
-        />
-        <Button
-          onPress={onPressSubmitHaiku}
-          title="Generate Haiku"
-          color="#841584"
-          accessibilityLabel="Generate a Haiku"
-        />
-      </View>
+      <Image source={require('../../images/bg_create.jpg')} style={styles.backgroundImage}>
+        <View style={styles.view}>
+          <HaikuTextInput
+            style={styles.text}
+            syllables={5}
+          />
+          <HaikuTextInput
+            style={styles.text}
+            syllables={7}
+          />
+          <HaikuTextInput
+            style={styles.text}
+            syllables={5}
+          />
+          <Button
+            onPress={onPressSubmitHaiku}
+            title="Generate Haiku"
+            color="#841584"
+            accessibilityLabel="Generate a Haiku"
+          />
+        </View>
+      </Image>
     );
   }
 }
@@ -47,9 +50,21 @@ const onPressSubmitHaiku = () => {
 };
 
 const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+    alignSelf: 'stretch',
+    width: null
+  },
+  text: {
+    alignItems: 'center',
+    borderColor: 'transparent',
+    height: 40,
+    padding: 5,
+    textAlign: 'center'
+  },
   view: {
     alignItems: 'center',
-    padding: 100
+    padding: 30
   }
 });
 

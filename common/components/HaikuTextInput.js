@@ -12,7 +12,7 @@ class HaikuTextInput extends React.Component {
       <TextInput
         style={{height: 40, borderColor: 'gray', borderWidth: 1}}
         onChangeText={(text) => this.setState({text})}
-        value={this.state.text}
+        placeholder={this.state.text}
       />
     );
   }
