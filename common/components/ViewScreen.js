@@ -8,8 +8,6 @@ import {
     ScrollView
 } from 'react-native';
 
-var Carousel = require('react-native-carousel');
-
 const tryAgainBtn_Click = () => {
   Alert.alert('Try Again Button has been pressed!');
 };
@@ -25,7 +23,7 @@ const saveBtn_Click = () => {
 class ViewScreen extends React.Component {
     static navigationOptions = {
         // Nav options can be defined as a function of the navigation prop:
-        title: ({ state }) => `Chat with ${state.params.exampleParam}`,
+        title: ({ state }) => 'Woah, that was deep',
     };
 
     render() {

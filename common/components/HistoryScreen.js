@@ -8,7 +8,7 @@ import {
 
 class HistoryScreen extends React.Component {
   static navigationOptions = {
-    title: 'Welcome',
+    title: 'Gifstory',
   };
   render() {
     const { navigate } = this.props.navigation;
@@ -25,7 +25,7 @@ class HistoryScreen extends React.Component {
           Cmd+D or shake for dev menu
         </Text>
         <Button
-          onPress={() => navigate('Create', { exampleParam: 'Jonathan' })}
+          onPress={() => navigate('Create')}
           title="Open Example Screen"
         />
       </View>
