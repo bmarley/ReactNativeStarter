@@ -4,27 +4,28 @@ import {
     Text 
 } from 'react-native';
 
+import firebase from '../services/firebase';
+
 import Haiku from './Haiku.js';
 
 class HaikuList extends React.Component {
     
     constructor() {
         super();
-        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        //replace with getHaikuList
+        this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
         this.state = {
-          haikuList: ds.cloneWithRows(
-              [{
-                line: 'dark lounges pondered',
-                url: 'https://media.giphy.com/media/EDsTUVnDM9kLS/giphy.gif'
-              }, {
-                line: 'false flowers agreed warmly',
-                url: 'https://media.giphy.com/media/Zk9mW5OmXTz9e/giphy.gif'
-              }, {
-                line: 'wet flowers agreed',
-                url: 'https://media.giphy.com/media/11eZCNibwDFx6w/giphy.gif'
-              }])
+          haikuList: this.ds.cloneWithRows([])
         };
+      
+        this.getHaikuList();
+    }
+  
+    getHaikuList() {
+      let that = this;
+      firebase.getList(function(data) {
+        that.setState({haikuList: that.ds.cloneWithRows(data)});
+      });
     }
     
     render() {
