@@ -34,10 +34,11 @@ class CreateScreen extends React.Component {
             syllables={5}
           />
           <Button
-            onPress={onPressSubmitHaiku}
-            title="Generate Haiku"
+            style={styles.button}
             color="#841584"
-            accessibilityLabel="Generate a Haiku"
+            onPress={onPressSubmitHaiku}
+            title='Generate Haiku'
+            accessibilityLabel='Generate a Haiku'
           />
         </View>
       </Image>
@@ -53,18 +54,28 @@ const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
     alignSelf: 'stretch',
-    width: null
+    padding: 30,
+    width: null,
+  },
+  button: {
+    alignItems: 'center',
+    borderWidth: 0,
+    height: 50,
+    padding: 5,
+    textAlign: 'center',
   },
   text: {
     alignItems: 'center',
-    borderColor: 'transparent',
-    height: 40,
+    backgroundColor: '#FFFFFFDD',
+    borderWidth: 0,
+    height: 50,
     padding: 5,
-    textAlign: 'center'
+    marginBottom: 30,
+    textAlign: 'center',
   },
   view: {
     alignItems: 'center',
-    padding: 30
+    padding: 30,
   }
 });
 
