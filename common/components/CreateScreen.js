@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import {
+  Alert,
+  Button,
   StyleSheet,
   Text,
   View
 } from 'react-native';
+
+import HaikuTextInput from './HaikuTextInput';
 
 class CreateScreen extends React.Component {
   static navigationOptions = {
@@ -15,11 +19,32 @@ class CreateScreen extends React.Component {
     const { params } = this.props.navigation.state;
     return (
       <View style={styles.view}>
-        <Text>Chatting with {params.exampleParam}...</Text>
+        <HaikuTextInput
+          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+          syllables={5}
+        />
+        <HaikuTextInput
+          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+          syllables={7}
+        />
+        <HaikuTextInput
+          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+          syllables={5}
+        />
+        <Button
+          onPress={onPressSubmitHaiku}
+          title="Generate Haiku"
+          color="#841584"
+          accessibilityLabel="Generate a Haiku"
+        />
       </View>
     );
   }
 }
+
+const onPressSubmitHaiku = () => {
+  Alert.alert('Poetry in motion');
+};
 
 const styles = StyleSheet.create({
   view: {
