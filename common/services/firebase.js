@@ -3,7 +3,7 @@ import config from '../../ignore/firebase_keys';
 
 firebase.initializeApp(config);
 
-let read = function(callback) {
+let getList = function(callback) {
 
     let rootPath = "/";
 
@@ -20,6 +20,16 @@ let read = function(callback) {
 
 };
 
+let save = function(model, callback) {
+
+};
+
+let get = function(id, callback) {
+
+};
+
 module.exports = {
-    read: read
+    getList: getList,
+    save: save,
+    get: get
 };

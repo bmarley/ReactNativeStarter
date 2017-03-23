@@ -21,7 +21,7 @@ class TestScreen extends React.Component {
         };
 
         let $this = this;
-        firebase.read(result => {
+        firebase.getList(result => {
             $this.setState({
                 text: result
             });
