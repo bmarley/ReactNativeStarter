@@ -72,8 +72,8 @@ class ViewScreen extends React.Component {
         const { params } = this.props.navigation.state;
         let model = {
             text1: params.haiku.text1 || null,
-            text2: params.haiku.text1 || null,
-            text3: params.haiku.text1 || null,
+            text2: params.haiku.text2 || null,
+            text3: params.haiku.text3 || null,
             gif1: params.haiku.gif1 || null,
             gif2: params.haiku.gif2 || null,
             gif3: params.haiku.gif3 || null,
