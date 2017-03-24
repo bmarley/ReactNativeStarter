@@ -117,8 +117,9 @@ const styles = StyleSheet.create({
       height: 60,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: 'green',
       textAlign: 'center',
+      fontSize: 16,
+      padding: 20
     },
     buttons: {
       flex: 1,
