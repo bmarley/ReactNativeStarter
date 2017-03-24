@@ -22,7 +22,7 @@ const saveBtn_Click = () => {
 };
 
 class ViewScreen extends React.Component {
-
+  
   static navigationOptions = {
         // Nav options can be defined as a function of the navigation prop:
         title: ({ state }) => 'Haiku Time'
@@ -38,21 +38,21 @@ class ViewScreen extends React.Component {
                   alignItems: 'center'}}>
                       <View style={styles.haikuComponent}>
                         <Image style={styles.haikuImage}
-                                source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
+                                source={{uri: params.haiku.gif1}}
                         />
-                        <Text style={styles.haikuText}>View 1</Text>
+                        <Text style={styles.haikuText}>{params.haiku.text1}</Text>
                       </View>
                       <View style={styles.haikuComponent}>
                         <Image style={styles.haikuImage}
-                                source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
+                                source={{uri: params.haiku.gif2}}
                         />
-                        <Text style={styles.haikuText}>View 2</Text>
+                        <Text style={styles.haikuText}>{params.haiku.text2}</Text>
                       </View>
                       <View style={styles.haikuComponent}>
                         <Image style={styles.haikuImage}
-                                source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
+                                source={{uri: params.haiku.gif3}}
                         />
-                        <Text style={styles.haikuText}>View 3</Text>
+                        <Text style={styles.haikuText}>{params.haiku.text3}</Text>
                       </View>
                   </ScrollView>
                 </View>
