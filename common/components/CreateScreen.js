@@ -97,11 +97,14 @@ class CreateScreen extends React.Component {
             gif3 = data[0].images.original.url;
             console.log(gif3);
 
-            let model = [
-              { 'text1': state.text1, 'gif1': gif1 },
-              { 'text2': state.text2, 'gif2': gif2 },
-              { 'text3': state.text3, 'gif3': gif3 }
-            ];
+            let model = {
+                'text1': state.text1,
+                'gif1': gif1,
+                'text2': state.text2,
+                'gif2': gif2,
+                'text3': state.text3,
+                'gif3': gif3
+            };
 
             console.log('All gifs have been received; generated model ' + JSON.stringify(model));
 
