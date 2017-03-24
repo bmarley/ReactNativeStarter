@@ -3,7 +3,7 @@ import {
     StyleSheet,
     Text,
     View,
-    TouchableOpacity,
+    Button,
     Alert,
     ScrollView,
     Image
@@ -57,9 +57,13 @@ class ViewScreen extends React.Component {
                   </ScrollView>
                 </View>
                 <View style={styles.buttons}>
-                  <TouchableOpacity onPress={saveBtn_Click} style={styles.saveBtn}>
-                    <Text>Save</Text>
-                  </TouchableOpacity>
+                  <Button
+                    style={styles.button}
+                    onPress={saveBtn_Click}
+                    title="Save"
+                    color="#841584"
+                    accessibilityLabel='Save Haiku'
+                  />
                 </View>
             </View>
         );
@@ -91,10 +95,9 @@ const styles = StyleSheet.create({
       alignItems: 'center'
     },
     haikuContent: {
-      flex: 6,
+      flex: 8,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: 'blue'
     },
     haikuScrollView: {
       width: '100%',
@@ -122,8 +125,17 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
     },
+    button: {
+      alignItems: 'center',
+      borderWidth: 0,
+      height: 50,
+      padding: 5,
+      textAlign: 'center',
+    },
     saveBtn: {
-        backgroundColor: 'red'
+        backgroundColor: 'red',
+        width: 120,
+        height: 60
     }
 });
 
