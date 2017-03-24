@@ -22,7 +22,8 @@ const saveBtn_Click = () => {
 };
 
 class ViewScreen extends React.Component {
-    static navigationOptions = {
+
+  static navigationOptions = {
         // Nav options can be defined as a function of the navigation prop:
         title: ({ state }) => 'Haiku Time',
     };
@@ -33,7 +34,8 @@ class ViewScreen extends React.Component {
         return (
             <View style={styles.view}>
                 <View style={styles.haikuContent}>
-                  <ScrollView style={styles.haikuScrollView}>
+                  <ScrollView style={styles.haikuScrollView} contentContainerStyle={{justifyContent: 'center',
+                  alignItems: 'center'}}>
                       <View style={styles.haikuComponent}>
                         <Image style={styles.haikuImage}
                                 source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
@@ -55,7 +57,7 @@ class ViewScreen extends React.Component {
                   </ScrollView>
                 </View>
                 <View style={styles.buttons}>
-                  <TouchableOpacity onPress={saveBtn_Click}>
+                  <TouchableOpacity onPress={saveBtn_Click} style={styles.saveBtn}>
                     <Text>Save</Text>
                   </TouchableOpacity>
                 </View>
@@ -70,6 +72,7 @@ const styles = StyleSheet.create({
         // padding: 10,
         // flexDirection: 'column',
         flex: 1,
+        backgroundColor: '#b3d6d2'
         // justifyContent: 'center',
         // alignItems: 'center',
         // backgroundColor: 'transparent',
@@ -93,17 +96,34 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       backgroundColor: 'blue'
     },
+    haikuScrollView: {
+      width: '100%',
+      height: '100%'
+    },
     haikuComponent: {
-
+      padding: 10,
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     haikuImage: {
-      width: 150,
-      height: 150
+      width: 300,
+      height: 200
+    },
+    haikuText: {
+      width: 300,
+      height: 60,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'green',
+      textAlign: 'center',
     },
     buttons: {
       flex: 1,
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+    },
+    saveBtn: {
+        backgroundColor: 'red'
     }
 });
 
