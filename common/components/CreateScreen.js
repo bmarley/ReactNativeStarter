@@ -60,6 +60,8 @@ class CreateScreen extends React.Component {
 
   onPressSubmitHaiku() {
     let state = this.state;
+    let navigate = this.props.navigate;
+
     if (!state.text1 || !state.text2 || !state.text3) {
       Alert.alert('Fill in all fields')
     } else {
@@ -78,7 +80,16 @@ class CreateScreen extends React.Component {
             gif3 = data[0].images.original.url;
             console.log(gif3);
 
-            Alert.alert('All gifs have been received')
+            let model = [
+              { 'text1': state.text1, 'gif1': gif1 },
+              { 'text2': state.text2, 'gif2': gif2 },
+              { 'text3': state.text3, 'gif3': gif3 }
+            ];
+
+            console.log('All gifs have been received; generated model ' + JSON.stringify(model));
+
+            // TODO: Pass model to view
+            //navigate('View', { model: model });
           });
         });
       });
