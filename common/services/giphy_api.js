@@ -18,6 +18,19 @@ function search(query) {
         });
 }
 
+function random(query) {
+    let url = baseUrl + '/random' + apiKeyParam;
+    return fetch(url)
+        .then((response) => response.json())
+        .then((responseJson) => {
+            //console.log(responseJson.data[0]);
+            return responseJson.data;
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+}
+
 module.exports = {
     search: search
 };
