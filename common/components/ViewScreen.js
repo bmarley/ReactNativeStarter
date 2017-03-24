@@ -22,7 +22,7 @@ const saveBtn_Click = () => {
 };
 
 class ViewScreen extends React.Component {
-  
+
   static navigationOptions = {
         // Nav options can be defined as a function of the navigation prop:
         title: ({ state }) => 'Haiku Time'
