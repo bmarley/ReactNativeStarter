@@ -11,7 +11,7 @@ class Haiku extends React.Component {
   render () {
     const { navigate } = this.props.navigation;
     return (
-      <TouchableOpacity onPress={() => navigate('View', { haiku: this.props })}>
+      <TouchableOpacity onPress={() => navigate('View', { haiku: this.props, isHistory: true })}>
         <View 
           style={styles.container}>
           <Text style={styles.text}>
