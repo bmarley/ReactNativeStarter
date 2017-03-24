@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, TextInput } from 'react-native';
+import { AppRegistry, Text, TextInput } from 'react-native';
 
 class HaikuTextInput extends React.Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class HaikuTextInput extends React.Component {
         style={this.props.style}
         onChangeText={this.props.onChangeText}
         placeholder={this.state.text}
-        placeholderTextColor='black'
+        placeholderTextColor='gray'
       />
     );
   }

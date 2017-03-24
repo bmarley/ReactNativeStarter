@@ -12,10 +12,12 @@ import HaikuTextInput from './HaikuTextInput';
 import firebase from '../services/firebase';
 import GiphyAPI from '../services/giphy_api';
 
+import syllable from 'syllable';
+
 class CreateScreen extends React.Component {
   static navigationOptions = {
     // Nav options can be defined as a function of the navigation prop:
-    title: ({ state }) => 'Haiku Me',
+    title: ({ state }) => 'Haku Me',
   };
 
   constructor(props) {
@@ -32,26 +34,35 @@ class CreateScreen extends React.Component {
       <Image source={require('../../images/bg_create.jpg')} style={styles.backgroundImage}>
         <View style={styles.view}>
           <HaikuTextInput
-            style={styles.text}
+            style={styles.haikuInput}
             onChangeText={(text) => this.setState({text1: text})}
             syllables={5}
           />
+          <Text style={styles.syllableText}>
+            {syllable(this.state.text1)} syllables
+          </Text>
           <HaikuTextInput
-            style={styles.text}
+            style={styles.haikuInput}
             onChangeText={(text) => this.setState({text2: text})}
             syllables={7}
           />
+          <Text style={styles.syllableText}>
+            {syllable(this.state.text2)} syllables
+          </Text>
           <HaikuTextInput
-            style={styles.text}
+            style={styles.haikuInput}
             onChangeText={(text) => this.setState({text3: text})}
             syllables={5}
           />
+          <Text style={styles.syllableText}>
+            {syllable(this.state.text3)} syllables
+          </Text>
           <Button
             style={styles.button}
             onPress={this.onPressSubmitHaiku.bind(this)}
-            title="Generate Haiku"
-            color="#841584"
-            accessibilityLabel='Generate a Haiku'
+            title='Generate Haiku'
+            color='#841584'
+            accessibilityLabel='Generate a Haiku'å
           />
         </View>
       </Image>
@@ -64,6 +75,12 @@ class CreateScreen extends React.Component {
 
     if (!state.text1 || !state.text2 || !state.text3) {
       Alert.alert('Fill in all fields')
+    } else if (syllable(state.text1) != 5) {
+      Alert.alert('Please enter 5 syllables for the first phrase')
+    } else if (syllable(state.text2) != 7) {
+      Alert.alert('Please enter 7 syllables for the second phrase')
+    } else if (syllable(state.text3) != 5) {
+      Alert.alert('Please enter 5 syllables for the third phrase')
     } else {
       var gif1, gif2, gif3;
 
@@ -112,14 +129,19 @@ const styles = StyleSheet.create({
     padding: 5,
     textAlign: 'center',
   },
-  text: {
+  haikuInput: {
     alignItems: 'center',
     backgroundColor: '#FFFFFFDD',
     borderWidth: 0,
     height: 50,
     padding: 5,
-    marginBottom: 30,
     textAlign: 'center',
+  },
+  syllableText: {
+    textAlign: 'right',
+    marginBottom: 30,
+    width: '100%',
+    padding: 2
   },
   view: {
     alignItems: 'center',
