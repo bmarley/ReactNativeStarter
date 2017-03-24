@@ -18,11 +18,13 @@ class HistoryScreen extends React.Component {
     return (
       <View style={styles.container}>
         <HaikuList navigation={this.props.navigation}/>
+        <View style={styles.create}>
         <Button
-          style={styles.create}
+          color="#aaa"
           onPress={() => navigate('Create', { exampleParam: 'Jonathan' })}
-          title="Let's Hai-go!"
+          title="+"
         />
+        </View>
       </View>
     );
   }
@@ -44,7 +46,16 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   create: {
-    backgroundColor: '#e5e5e5'
+    alignItems: 'center',
+    height: 50,
+    width: 50,
+    padding: 5,
+    backgroundColor: 'white',
+    color: 'red',
+    borderRadius: 50,
+    right: 15,
+    position: 'absolute',
+    bottom: 15
   }
 });
 
