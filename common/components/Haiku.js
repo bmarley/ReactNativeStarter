@@ -15,10 +15,10 @@ class Haiku extends React.Component {
         <View 
           style={styles.container}>
           <Text style={styles.text}>
-            {this.props.line}...
+            {this.props.text1}...
           </Text>
           <Image 
-            source={{uri:this.props.url}}
+            source={{uri:this.props.gif1}}
             style={styles.image}
           />
         </View>
