@@ -32,6 +32,7 @@ class HaikuList extends React.Component {
         return (
           <ListView
             dataSource={this.state.haikuList}
+            enableEmptySections={true}
             renderRow={(data) => <Haiku {...data} navigation={this.props.navigation}/>}
           />
         );
