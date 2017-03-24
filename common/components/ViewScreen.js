@@ -8,6 +8,8 @@ import {
     ScrollView,
     Image
 } from 'react-native';
+import firebase from '../services/firebase';
+import { NavigationActions } from 'react-navigation';
 
 const tryAgainBtn_Click = () => {
   Alert.alert('Try Again Button has been pressed!');
@@ -16,10 +18,6 @@ const tryAgainBtn_Click = () => {
 // <TouchableOpacity onPress={tryAgainBtn_Click}>
 //   <Text>Try Again</Text>
 // </TouchableOpacity>
-
-const saveBtn_Click = () => {
-  Alert.alert('Save Button has been pressed!');
-};
 
 class ViewScreen extends React.Component {
   
@@ -57,13 +55,40 @@ class ViewScreen extends React.Component {
                   </ScrollView>
                 </View>
                 <View style={styles.buttons}>
-                  <TouchableOpacity onPress={saveBtn_Click} style={styles.saveBtn}>
+                  <TouchableOpacity onPress={this.saveBtn_Click.bind(this)} style={styles.saveBtn}>
                     <Text>Save</Text>
                   </TouchableOpacity>
                 </View>
             </View>
         );
     }
+
+    saveBtn_Click() {
+        const { navigate } = this.props.navigation;
+        const { params } = this.props.navigation.state;
+        let model = {
+            text1: params.haiku.text1 || null,
+            text2: params.haiku.text1 || null,
+            text3: params.haiku.text1 || null,
+            gif1: params.haiku.gif1 || null,
+            gif2: params.haiku.gif2 || null,
+            gif3: params.haiku.gif3 || null,
+        };
+
+        const navigateAction = NavigationActions.navigate({
+
+            routeName: 'Profile',
+
+            params: {},
+
+            action: NavigationActions.navigate({ routeName: 'SubProfileRoute'})
+        });
+
+
+        firebase.save(model, function() {
+            Alert.alert('Saved!');
+        });
+    };
 }
 
 const styles = StyleSheet.create({
